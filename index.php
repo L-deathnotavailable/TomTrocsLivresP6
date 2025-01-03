@@ -18,10 +18,10 @@ try {
             $homeController->showHome();
         break;
 
-        // case 'showBooks': 
-        //     $booksController = new BooksController();
-        //     $booksController->showBooks();
-        //     break;
+        case 'showBooks': 
+            $booksController = new BooksController();
+            $booksController->showBooks();
+        break;
 
         // Section Inscription & connexion.
 
