@@ -7,6 +7,13 @@
   --colorGrayDark: #292929;
   --colorGrayLight: #A6A6A6;
 }
+
+h2{
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+
 /* Header */
   nav {
       background-color: #F5F3EF;
@@ -144,12 +151,6 @@
     margin: auto;
     justify-content: center;
     align-items: center;
-  }
-
-  .homepage h2{
-    font-family: "Playfair Display", serif;
-    font-size: 32px;
-    font-weight: 400;
   }
 
   .cards-container {
