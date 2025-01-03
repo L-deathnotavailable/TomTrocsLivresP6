@@ -10,7 +10,7 @@
 <header>
     <nav>
         <!-- logo TomTroc à mettre ici  -->
-        <a href="index.php?action=home" class="navbar__link"><img src="images/logo.svg"alt="Logo officiel de TomTroc" class=""></a>
+        <a href="index.php?action=home" class="navbar-link"><img src="images/logo.svg"alt="Logo officiel de TomTroc" class=""></a>
         <div class ="HomeExgangeBook">
             <a href="index.php?action=home">Accueil</a>
             <a href="index.php?action=showBooks">Nos livres à l'échange</a>
