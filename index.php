@@ -24,8 +24,8 @@ try {
         break;
 
         case 'showSingleBook': 
-            $SingleBookController = new SingleBookController();
-            $SingleBookController->showSingleBook();
+            $booksController = new BooksController();
+            $booksController->showSingleBook();
         break;
 
         // Section Inscription & connexion.
