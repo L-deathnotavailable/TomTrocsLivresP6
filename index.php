@@ -18,6 +18,8 @@ try {
             $homeController->showHome();
         break;
 
+        // Books part
+
         case 'showBooks': 
             $booksController = new BooksController();
             $booksController->showBooks();
@@ -27,6 +29,20 @@ try {
             $booksController = new BooksController();
             $booksController->showSingleBook();
         break;
+
+        // User part
+
+        case 'showInscription': 
+            $userController = new UserController();
+            $userController->showInscription();
+        break;
+
+        case 'showConnexion': 
+            $userController = new UserController();
+            $userController->showConnexion();
+        break;
+
+
 
         // Section Inscription & connexion.
 
