@@ -23,6 +23,11 @@ try {
             $booksController->showBooks();
         break;
 
+        case 'showSingleBook': 
+            $SingleBookController = new SingleBookController();
+            $SingleBookController->showSingleBook();
+        break;
+
         // Section Inscription & connexion.
 
         // case 'connectionForm':
