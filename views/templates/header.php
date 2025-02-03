@@ -17,7 +17,7 @@
         </div>
         <div class ="MessageAccountConnex"></div>
             <a href="index.php?action=about">Messagerie</a>
-            <a href="index.php?action=register">Mon compte</a>
+            <a href="index.php?action=showMyAccount">Mon compte</a>
             <a href="index.php?action=showConnexion">Connexion</a>
         </div>
     </nav>
