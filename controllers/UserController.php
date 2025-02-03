@@ -9,4 +9,8 @@ class UserController {
         $view = new View('Connexion');
         $view->render('Connexion');
     }
+    public function showMyAccount() {
+        $view = new View('myAccount');
+        $view->render('myAccount');
+    }
 }

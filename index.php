@@ -42,6 +42,12 @@ try {
             $userController->showConnexion();
         break;
 
+        //Account part
+
+        case 'showMyAccount': 
+            $userController = new UserController();
+            $userController->showMyAccount();
+        break;
 
 
         // Section Inscription & connexion.

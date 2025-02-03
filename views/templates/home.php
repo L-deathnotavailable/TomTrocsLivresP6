@@ -26,7 +26,7 @@
                 </a>
             </div>
             <div class="book-card">
-                <a href="index.php?action=bookDetails&id=1">
+                <a href="index.php?action=showSingleBook&id=1">
                     <img src="books/images/TheKinfolkTable.png" alt="title book1">
                     <div class="text-card">
                         <p class="title-book-card">The Kinfolk Table</p>
@@ -36,7 +36,7 @@
                 </a>
             </div>
             <div class="book-card">
-                <a href="index.php?action=bookDetails&id=1">
+                <a href="index.php?action=showSingleBook&id=1">
                     <img src="books/images/WabiSabi.png" alt="title book1">
                     <div class="text-card">
                         <p class="title-book-card">Wabi Sabi</p>
@@ -46,7 +46,7 @@
                 </a>
             </div>
             <div class="book-card">
-                <a href="index.php?action=bookDetails&id=1">
+                <a href="index.php?action=showSingleBook&id=1">
                     <img src="books/images/MilkAndHoney.png" alt="title book1">
                     <div class="text-card">
                         <p class="title-book-card">Milk & Honey</p>
