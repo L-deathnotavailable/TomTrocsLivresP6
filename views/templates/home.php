@@ -3,7 +3,7 @@
         <h1 class="content-title">Rejoignez nos lecteurs passionnés</h1>
         <p class="content-text">Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la
             lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <a class="green-button" href="#">Découvrir</a>
+        <a class="green-button" href="index.php?action=showBooks">Découvrir</a>
     </div>
     <div class="right-section">
         <img class="content-img" src="images/hamza-nouasria.jpg" alt="Photo d'Hamza Nousaria">
@@ -15,48 +15,23 @@
         <h2>Les derniers livres ajoutés</h2>
 
         <div class="cards-container">
-            <div class="book-card">
-                <a href="index.php">
-                    <img src="books/images/EstherBook.png" alt="title book1">
-                    <div class="text-card">
-                        <p class="title-book-card">Esther</p>
-                        <p class="author-book-card">Alabaster</p>
-                        <p class="seller-book-card">Vendu par : Camille</p>
-                    </div>
-                </a>
-            </div>
-            <div class="book-card">
-                <a href="index.php?action=bookDetails&id=1">
-                    <img src="books/images/TheKinfolkTable.png" alt="title book1">
-                    <div class="text-card">
-                        <p class="title-book-card">The Kinfolk Table</p>
-                        <p class="author-book-card">Nathan Williams</p>
-                        <p class="seller-book-card">Vendu par : Nathalie</p>
-                    </div>
-                </a>
-            </div>
-            <div class="book-card">
-                <a href="index.php?action=bookDetails&id=1">
-                    <img src="books/images/WabiSabi.png" alt="title book1">
-                    <div class="text-card">
-                        <p class="title-book-card">Wabi Sabi</p>
-                        <p class="author-book-card">Beth Kempton</p>
-                        <p class="seller-book-card">Vendu par : Alexlecture</p>
-                    </div>
-                </a>
-            </div>
-            <div class="book-card">
-                <a href="index.php?action=bookDetails&id=1">
-                    <img src="books/images/MilkAndHoney.png" alt="title book1">
-                    <div class="text-card">
-                        <p class="title-book-card">Milk & Honey</p>
-                        <p class="author-book-card">Rupikor</p>
-                        <p class="seller-book-card">Vendu par : Hugo1497</p>
-                    </div>
-                </a>
-            </div>
+
+            <?php /**@var Book $book */
+            foreach ($books as $book): ?>
+                <div class="book-card">
+                    <a href="index.php?action=showSingleBook&id=<?= $book->getId() ?>">
+                        <img src="books/images/<?= htmlspecialchars($book->getImage()) ?>" alt="<?= htmlspecialchars($book->getTitle()) ?>">
+                        <div class="text-card">
+                            <p class="title-book-card"><?= htmlspecialchars($book->getTitle()) ?></p>
+                            <p class="author-book-card"><?= htmlspecialchars($book->getAuthor()) ?></p>
+                            <p class="seller-book-card">Vendu par : <?= htmlspecialchars($book->getSellerName()) ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+            
         </div>
-        <a href="index.php?action=bookTrading" class="green-button">Voir tous les livres</a>
+        <a href="index.php?action=showBooks" class="green-button">Voir tous les livres</a>
     </section>
 
     <section class="how-it-work">
@@ -77,7 +52,7 @@
                 <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
             </div>
         </div>
-        <a href="index.php?action=bookTrading" class="green-button transparent">Voir tous les livres</a>
+        <a href="index.php?action=showBooks" class="green-button transparent">Voir tous les livres</a>
     </section>
 
     <section class="our-values">
