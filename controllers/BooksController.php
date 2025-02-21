@@ -6,7 +6,16 @@ class BooksController {
         $view->render('Books');
     }
     public function showSingleBook() {
-        $view = new View('Single Book');
-        $view->render('singleBook');
+
+        $id = Utils::request("id", -1);
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($id);
+
+        if (!$book) {
+            throw new Exception("Le bouquin demandé n'existe pas.");
+        }
+
+        $view = new View($book -> getTitle());
+        $view->render('singleBook', ['book' => $book]);
     }
 }
