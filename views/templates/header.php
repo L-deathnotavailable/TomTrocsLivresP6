@@ -14,6 +14,7 @@
         <div class ="HomeExgangeBook">
             <a href="index.php?action=home">Accueil</a>
             <a href="index.php?action=showBooks">Nos livres à l'échange</a>
+            <a href="index.php?action=register">Mon compte</a>
         </div>
         <div class ="MessageAccountConnex"></div>
             <a href="index.php?action=about">Messagerie</a>
