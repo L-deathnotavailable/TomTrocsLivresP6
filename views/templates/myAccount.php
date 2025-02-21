@@ -16,7 +16,7 @@
                             <p class="user-informations-username">Nathalire</p>
                             <p class="user-informations-seniority">Membre depuis 2020</p>
                             <p class="user-informations-library">BIBLIOTHÈQUE</p>
-                            <p class="user-informations-nb-book"></p> <a href="#">Ajouter un livre</a>
+                            <p class="user-informations-nb-book">Nbre livres</p> 
                         </div>
                     </div>
                 </div>

@@ -595,6 +595,7 @@ input[type="submit"] {
   display: flex;
   flex-direction: column;
   margin: auto;
+  padding-top: 20px;
 }
 
 .user-update-form label {
@@ -619,16 +620,16 @@ input[type="submit"] {
   width: auto;
   color: var(--colorGreen);
   background-color: var(--backgroundColor);
-  margin: 40px 0 20px 0;
   font-weight: 600;
   border: #00AC66 solid 2px;
 }
 
 .user-library {
-  grid-area: user-library;
   width: 100%;
   margin: 40px 0;
   text-align: left;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .light {
@@ -636,26 +637,36 @@ input[type="submit"] {
 }
 
 .user-library table {
-  margin-left: 20px;
   margin-top: 20px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-
-.user-library th {
-  padding: 5px;
-  height: 100%;
+.user-library th, .user-library td {
+  padding: 40px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
 }
+
+.user-library thead th {
+  padding-right: 20px;
+  border-bottom: solid #F5F3EF 1px;
+}
+
 
 .tab-active .user-library-details-image {
   width: 10%;
 }
 
 .tab-active .user-library-details-title {
-  width: 15%;
+  width: 13%;
 }
 
 .tab-active .user-library-details-author {
-  width: 20%;
+  width: 10%;
 }
 
 .tab-active .user-library-details-description {
@@ -667,6 +678,7 @@ input[type="submit"] {
 }
 
 .user-library-details-available .available {
+  font-weight: 500;
   background-color: #6DC5A1;
   text-align: center;
   border-radius: 30px;
@@ -676,12 +688,13 @@ input[type="submit"] {
 }
 
 .user-library-details-available .not-available {
+  font-weight: 500;
   background-color: #C56D6D;
   text-align: center;
   border-radius: 30px;
   color: #FFFFFF;
   padding: 2px;
-  width: 120px;
+  width: 100%;
 }
 
 thead tr th {
