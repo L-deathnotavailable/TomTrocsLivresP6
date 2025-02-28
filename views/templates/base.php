@@ -22,6 +22,19 @@
 <body>
     <?php include ('header.php');?>
     <main>    
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="error">
+                <?php echo $_SESSION['error']; ?>
+                <?php unset($_SESSION['error']); // Supprimer le message après affichage ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="success">
+                <?php echo $_SESSION['success']; ?>
+                <?php unset($_SESSION['success']); // Supprimer le message après affichage ?>
+            </div>
+        <?php endif; ?>
         <?= $content /* Ici est affiché le contenu réel de la page. */ ?>
     </main>
     

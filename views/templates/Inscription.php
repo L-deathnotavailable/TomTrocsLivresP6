@@ -2,7 +2,7 @@
 
     <div class="left-section">
         <h2>Inscription</h2>
-        <form method="POST" action="index.php?action=Inscription">
+        <form method="POST" action="index.php?action=inscription">
                 <label for="username">Pseudo</label>
                 <input type="text" id="username" name="username" minlength="3" maxlength="32" required>
 

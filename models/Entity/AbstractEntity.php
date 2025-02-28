@@ -4,6 +4,7 @@ abstract class AbstractEntity
 {
     // Par défaut l'id vaut -1, ce qui permet de vérifier facilement si l'entité est nouvelle ou pas. 
     protected int $id = -1;
+    protected DateTime $creationDate;
 
     /**
      * Constructeur de la classe.
@@ -53,5 +54,14 @@ abstract class AbstractEntity
     public function getId() : int 
     {
         return $this->id;
+    }
+
+    public function getCreationDateString(): string
+    {
+        return $this->creationDate->format('Y-m-d H:i:s');
+    }
+    public function setCreationDate(): void
+    {
+        $this->creationDate = new DateTime();
     }
 }

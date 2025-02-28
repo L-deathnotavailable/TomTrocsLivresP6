@@ -81,5 +81,4 @@ class Book extends AbstractEntity
         return $this->sellerName ?? 'Vendeur inconnu';
     }
 
-
 }
