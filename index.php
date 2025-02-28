@@ -37,6 +37,11 @@ try {
             $userController->showInscription();
         break;
 
+        case 'inscription':
+            $userController = new UserController();
+            $userController->inscription();
+        break;
+
         case 'showConnexion': 
             $userController = new UserController();
             $userController->showConnexion();
