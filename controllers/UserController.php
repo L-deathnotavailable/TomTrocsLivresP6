@@ -42,6 +42,59 @@ class UserController {
         $view = new View('Connexion');
         $view->render('Connexion');
     }
+
+    /**
+     * Connexion de l'utilisateur.
+     * @return void
+     */
+    public function Connexion() : void 
+    {
+        // On récupère les données du formulaire.
+        $email = Utils::request("email");
+        $password = Utils::request("password");
+
+        // On vérifie que les données sont valides.
+        if (empty($email) || empty($password)) {
+            throw new Exception("Tous les champs sont obligatoires. 1");
+        }
+
+        // On vérifie que l'utilisateur existe.
+        $userManager = new UserManager();
+        $user = $userManager->getUserByEmail($email);
+        if (!$user) {
+            throw new Exception("L'utilisateur demandé n'existe pas.");
+        }
+
+        // On vérifie que le mot de passe est correct.
+        if (!password_verify($password, $user->getPassword())) {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            throw new Exception("Le mot de passe est incorrect : $hash");
+        }
+
+        // On connecte l'utilisateur.
+        $_SESSION['user'] = $user;
+        $_SESSION['idUser'] = $user->getId();
+
+        // Stocker le message de succès dans une variable de session
+        $_SESSION['success'] = 'Connexion effectuée avec succès.';
+        // On redirige vers la page d'administration.
+        Utils::redirect("showConnexion");
+    }
+
+    /**
+     * Déconnexion de l'utilisateur.
+     * @return void
+     */
+    public function disconnectUser() : void 
+    {
+        if (isset($_SESSION['user'])) {
+            // On déconnecte l'utilisateur.
+            unset($_SESSION['user']);
+        }
+        // On redirige vers la page d'accueil.
+        Utils::redirect("home");
+    }
+
     public function showMyAccount() {
         $view = new View('myAccount');
         $view->render('myAccount');

@@ -26,4 +26,14 @@ class UserManager extends AbstractEntityManager
 
         return $result->fetchColumn() > 0;
     }
+    public function getUserByEmail(string $email) : ?User 
+    {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $result = $this->db->query($sql, ['email' => $email]);
+        $user = $result->fetch();
+        if ($user) {
+            return new User($user);
+        }
+        return null;
+    }
 }
