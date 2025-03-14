@@ -23,13 +23,11 @@ class BooksController {
         $view->render('singleBook', ['book' => $book]);
     }
     public function searchBooks(){
-        if (!isset($_POST['search']) || empty($_POST['search'])) {
-            echo json_encode([]);
-            return;
-        }
-        
-        $query = trim($_POST['search']);
         $bookManager = new BookManager();
+        if (!isset($_POST['search']) || empty($_POST['search'])) {
+            $books = $bookManager->getLastBooks(8);
+        }
+        $query = trim($_POST['search']);
         $books = $bookManager->searchBooks($query);
 
         $view = new View("Nos livres à l'échange");
