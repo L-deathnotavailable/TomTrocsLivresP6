@@ -16,6 +16,7 @@
     <title>Tom Troc - <?= $title ?></title>
     <link rel="icon" type="image/x-icon" href="images/icone.ico">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
