@@ -141,6 +141,34 @@ h2{
   }
 
 /* Book cards */
+/* Style de la barre de recherche */
+
+.last-added-books form {
+  background-color: #FFFFFF;
+  border-radius: 6px;
+}
+
+.last-added-books form i {
+  padding: 10px;
+  color: #D9D9D9;
+}
+
+#search {
+  max-width: 290px;
+  min-width: 240px;
+  height: 50px;
+  border: none;
+  border-radius: 0 6px 6px 0;
+}
+.header-exchanges {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+}
 /* Section last-added-books */
 
   .last-added-books {

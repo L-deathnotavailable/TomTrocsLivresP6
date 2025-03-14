@@ -68,6 +68,10 @@ try {
         //     break;
 
 
+        case 'searchBooks':
+            $bookController = new BooksController();
+            $bookController->searchBooks();
+            break;
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

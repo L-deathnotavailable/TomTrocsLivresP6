@@ -31,4 +31,35 @@ class BookManager extends AbstractEntityManager
         }
         return null;
     }
+
+    public function getLastBooks(int $limit): array {
+        $limit = intval($limit);
+
+        $sql = "SELECT books.id, books.title, books.author, books.image, users.username 
+                FROM books 
+                JOIN users ON books.seller_id = users.id 
+                ORDER BY books.creation_date DESC 
+                LIMIT $limit";
+
+        $result = $this->db->query($sql);
+        //$result = $this->db->query($sql,['limit' => $limit]); //--- TODO
+
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function searchBooks(string $query): array {
+        $query = "%".addslashes($query)."%"; // Ajout des % pour la recherche partielle + sécurisation
+
+        $sql = "SELECT books.id, books.title, books.author, books.image, users.username
+                FROM books
+                JOIN users ON books.seller_id = users.id
+                WHERE books.title LIKE '$query' 
+                OR books.author LIKE '$query' 
+                OR users.username LIKE '$query'
+                ORDER BY books.creation_date DESC";
+
+        $result = $this->db->query($sql);
+
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
