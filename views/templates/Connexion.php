@@ -2,7 +2,7 @@
 
     <div class="left-section">
         <h2>Connexion</h2>
-        <form method="POST" action="index.php?action=Inscription">
+        <form method="POST" action="index.php?action=Connexion">
 
                 <label for="email">Adresse email</label>
                 <input type="email" id="email" name="email" minlength="3" maxlength="320" required>
@@ -10,7 +10,7 @@
                 <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" minlength="12" maxlength="72" required>
 
-                <input type="submit" value="S'inscrire">
+                <input type="submit" value="Se connecter">
         </form>
         <p class="login-or-inscription-link">Pas de compte ? <a href="index.php?action=showInscription">Inscrivez-vous</a></p>
     </div>
