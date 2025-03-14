@@ -47,6 +47,16 @@ try {
             $userController->showConnexion();
         break;
 
+        case 'Connexion':
+            $userController = new UserController();
+            $userController->Connexion();
+        break;
+
+        case 'disconnectUser':
+            $adminController = new UserController();
+            $adminController->disconnectUser();
+        break;
+
         //Account part
 
         case 'showMyAccount': 
@@ -54,24 +64,11 @@ try {
             $userController->showMyAccount();
         break;
 
-
-        // Section Inscription & connexion.
-
-        // case 'connectionForm':
-        //     $adminController = new AdminController();
-        //     $adminController->displayConnectionForm();
-        //     break;
-
-        // case 'connectUser': 
-        //     $adminController = new AdminController();
-        //     $adminController->connectUser();
-        //     break;
-
-
         case 'searchBooks':
             $bookController = new BooksController();
             $bookController->searchBooks();
-            break;
+        break;
+        
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
