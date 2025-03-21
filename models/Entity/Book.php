@@ -9,6 +9,7 @@ class Book extends AbstractEntity
     private bool $available;
     private int $sellerId;
     private string $sellerName;
+    private ?string $accountPicture = null;
 
     public function setTitle(string $title): void
     {
@@ -79,6 +80,16 @@ class Book extends AbstractEntity
     public function getSellerName(): string
     {
         return $this->sellerName ?? 'Vendeur inconnu';
+    }
+
+    public function getAccountPicture(): ?string
+    {
+        return $this->accountPicture;
+    }
+
+    public function setAccountPicture(string $accountPicture): void
+    {
+        $this->accountPicture = $accountPicture ?? 'default.png'; // Met une image par défaut si NULL
     }
 
 }

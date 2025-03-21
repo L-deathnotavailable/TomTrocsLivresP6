@@ -20,7 +20,7 @@
         <div class="book-details-owner">
             <p class="book-details-subtitle">PROPRIÉTAIRE</p>
             <a class="book-details-owner-photo" href="#">
-                <img src="UserImages/Alexlecture.png" alt="Alexlecture user image">
+                <img src="UserImages/<?= $user->getAccountPicture()?>" alt="User image">
                 <p><?php echo $book->getSellerName(); ?></p>
             </a>
         </div>
