@@ -16,7 +16,8 @@
             <a href="index.php?action=showBooks">Nos livres à l'échange</a>
         </div>
         <div class ="MessageAccountConnex"></div>
-            <a href="index.php?action=about">Messagerie</a>
+            <?php $unreadCount = $_SESSION['unreadCount'] ?? 0; ?>
+            <a href="index.php?action=showChat">Messagerie<?php if ($unreadCount > 0): ?><span class="unread-badge"><?= $unreadCount ?></span><?php endif; ?></a>            
             <a href="index.php?action=showMyAccount">Mon compte</a>
             <?php 
                 // Si on est connecté, on affiche le bouton de déconnexion, sinon, on affiche le bouton de connexion : 

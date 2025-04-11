@@ -24,7 +24,7 @@ class User extends AbstractEntity
 
     public function setAccountPicture(string $accountPicture): void
     {
-        $this->accountPicture = $accountPicture;
+        $this->accountPicture = $accountPicture ?? 'default.png'; // Met une image par défaut si NULL
     }
     
     public function setUsername(string $username) : void

@@ -4,7 +4,7 @@ abstract class AbstractEntity
 {
     // Par défaut l'id vaut -1, ce qui permet de vérifier facilement si l'entité est nouvelle ou pas. 
     protected int $id = -1;
-    protected DateTime $creationDate;
+    protected ?DateTime $creationDate = null;
 
     /**
      * Constructeur de la classe.
@@ -46,7 +46,6 @@ abstract class AbstractEntity
         $this->id = $id;
     }
 
-    
     /**
      * Getter pour l'id.
      * @return int
@@ -56,12 +55,32 @@ abstract class AbstractEntity
         return $this->id;
     }
 
-    public function getCreationDateString(): string
+    public function getCreationDateString($format='Y-m-d H:i:s'): string
     {
-        return $this->creationDate->format('Y-m-d H:i:s');
+        return $this->creationDate ? $this->creationDate->format($format) : 'Date inconnue';
     }
-    public function setCreationDate(): void
-    {
-        $this->creationDate = new DateTime();
+    public function getCreationDate() : DateTime {
+        return $this->creationDate;
+    }
+    public function setCreationDate($creationDate): void {
+        if (is_string($creationDate) && !empty($creationDate)) {
+            $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $creationDate);
+            $this->creationDate = $dateTime ?: null; // Si la conversion échoue, on met null
+        } elseif ($creationDate instanceof DateTime) {
+            $this->creationDate = $creationDate;
+        } 
+    }
+
+    public function getListDateString(): string {
+        $now = new \DateTime();
+        $creationDate = $this->getCreationDate(); // Assure-toi que c’est un DateTime
+    
+        if ($now->format('Y-m-d') === $creationDate->format('Y-m-d')) {
+            // Si le message est d'aujourd'hui → heure hh:mm
+            return $creationDate->format('H:i');
+        } else {
+            // Sinon → date jj.mm
+            return $creationDate->format('d.m');
+        }
     }
 }
