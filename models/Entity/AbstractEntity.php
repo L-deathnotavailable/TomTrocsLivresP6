@@ -73,7 +73,7 @@ abstract class AbstractEntity
 
     public function getListDateString(): string {
         $now = new \DateTime();
-        $creationDate = $this->getCreationDate(); // Assure-toi que c’est un DateTime
+        $creationDate = $this->getCreationDate();
     
         if ($now->format('Y-m-d') === $creationDate->format('Y-m-d')) {
             // Si le message est d'aujourd'hui → heure hh:mm
