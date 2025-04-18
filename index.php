@@ -68,7 +68,17 @@ try {
             $bookController = new BooksController();
             $bookController->searchBooks();
         break;
-        
+
+        //Conversation chat part
+        case 'showChat';
+            $chatController = new ChatController();
+            $chatController->showChat();
+        break;
+        case 'sendMessage';
+            $chatController = new ChatController();
+            $chatController->sendMessage();
+        break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

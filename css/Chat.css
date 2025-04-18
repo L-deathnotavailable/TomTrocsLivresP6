@@ -1,0 +1,129 @@
+/* Messages part */
+.ChatShow {
+    display: flex;
+}
+/* LEFT SECTION */
+.ChatShow .left-section {
+    background-color: var(--backgroundColorLight);
+    padding: 0px 40px 0 40px;
+    height: 893px;
+}
+.messages-title{
+    font-family: "Playfair Display", serif; 
+    font-size: 26px;
+}
+.messages-last a {
+    text-decoration: none;
+    color: black;
+}
+.message-content {
+    color: var(--colorGrayLight);
+    font-size: 12px;
+    margin-left: 58px;
+    transform: translateY(-25px);
+}
+.message-date {
+    font-size: 12px;
+    padding: 10px 0px 10px 60px;
+}
+.user-name {
+    font-size: 14px;
+    padding: 7px 10px 10px 10px;
+}
+.user-image img {
+    width: 48px; 
+    height: 48px;
+    border-radius: 50%; /* Pour rendre l'image ronde */
+}
+.conversation-link {
+    display: block;
+    padding: 15px 15px 0px 15px;
+}
+.conversation-link.active {
+    background-color: white;
+}
+.bloc {
+    display: flex;
+}
+.bloc-name-date {
+    display: flex;
+}
+/* RIGHT SECTION */
+.chat-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-left: 5%;
+}
+.ChatShow .right-section {
+    flex: 8;
+    background-color: var(--backgroundColor);
+    padding-top: 35px;
+    width: 100%;
+    min-height: 900px;
+    background-color: var(--backgroundColor);
+    justify-content: space-between;
+}
+.messages-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--backgroundColor);
+    overflow-y: scroll;
+}
+.message-from-user {
+    align-self: flex-start;
+    margin-right: auto;
+    margin-left: 5%;
+}
+.message-to-user {
+    align-self: flex-end;
+    margin-left: auto;
+    margin-right: 5%;
+}
+.message-to-user .user-little-image {
+    display: none;
+}
+.message-from-user, .message-to-user {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    font-size: 12px;
+    border-radius: 3px;
+}
+.heure {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #A6A6A6;
+    background-color: unset;
+    padding: 5px 0 0 0;
+    margin-bottom: 5px;
+}
+.user-little-image img {
+    width: 24px; 
+    height: 24px;
+    border-radius: 50%;
+}
+/* Form part */
+form {
+    padding: 20px 40px;
+}
+form input[type="text"] {
+    resize: none;
+    overflow-y: scroll;
+    min-height: 44px;
+    max-height: 200px;
+    border: #F0F0F0 solid 1px;
+    border-radius: 6px;
+    width: 75%;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+form input[type="submit"] {
+    margin: 0 0 0 20px;
+    height: 50px;
+    width: 130px;
+    background-color: var(--colorGreen);
+    border: none;
+    border-radius: 10px;
+}
