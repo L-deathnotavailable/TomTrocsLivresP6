@@ -5,7 +5,7 @@
                 <div class="user-account-details">
                     <div class="user-informations">
                         <div class="user-informations-image">
-                            <img src="images/darwin-vegher.jpg" alt="image_défaut">
+                            <img src="Userimages/<?= $user->getAccountPicture() ?: '/Userimages/default.png' ?>" alt="image utilisateur">
                             <form method="POST" action="#"  enctype="">
                                 <input type="file" name="imageToUpload" id="imageToUpload" style="display: none;">
                                 <a href="#" id="new-user-image-link">modifier</a>
@@ -13,10 +13,27 @@
                             </form>
                         </div>
                         <div class="user-informations-details">
-                            <p class="user-informations-username">Nathalire</p>
-                            <p class="user-informations-seniority">Membre depuis 2020</p>
-                            <p class="user-informations-library">BIBLIOTHÈQUE</p>
-                            <p class="user-informations-nb-book">Nbre livres</p> 
+                        <p class="user-informations-username"><?= htmlspecialchars($user->getUsername()) ?></p>
+                        <p class="user-informations-seniority">
+                            <?php
+                                $now = new DateTime();
+                                $creationDate = $user->getCreationDate();
+                                $diff = $creationDate->diff($now);
+
+                                if ($diff->y >= 1) {
+                                    $years = $diff->y;
+                                    echo "Membre depuis $years " . ($years === 1 ? "an" : "ans");
+                                } else {
+                                    $months = $diff->m;
+                                    echo "Membre depuis $months " . ($months === 1 ? "mois" : "mois");
+                                }
+                            ?>
+                        </p>
+                        <p class="user-informations-library">BIBLIOTHÈQUE</p>
+                        <div class="number-Books">
+                            <img src="images/library.svg" width="10.41" height="13.71" alt="livre" style="vertical-align: middle; margin-right: 5px;">
+                            <p class="user-informations-nb-book"><?= count($books) ?> livre(s)</p>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -24,18 +41,22 @@
 
             <div class="right-section">
                 <div class="user-update-form">
-                    <form method="POST" action="">
+                    <form method="POST" action="index.php?action=updateUser">
                         <p>Vos informations personnelles</p>
+
                         <label for="email">Adresse email</label>
-                        <input type="email" id="email" name="email" minlength="3" maxlength="320" required value="example@gmail.com">
+                        <input type="email" id="email" name="email" minlength="3" maxlength="320" required 
+                            value="<?= htmlspecialchars($user->getEmail()) ?>">
 
                         <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="password" minlength="12" maxlength="72" required>
+                        <input type="password" id="password" name="password" minlength="12" maxlength="72" 
+                            placeholder="•••••••••" autocomplete="new-password">
 
                         <label for="username">Pseudo</label>
-                        <input type="text" id="username" name="username" minlength="3" maxlength="32" required value="TATATA">
+                        <input type="text" id="username" name="username" minlength="3" maxlength="32" required 
+                            value="<?= htmlspecialchars($user->getUsername()) ?>">
 
-                        <input type="submit" value="Enregistrer" >
+                        <input type="submit" value="Enregistrer">
                     </form>
                 </div>
             </div>
@@ -53,58 +74,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th class="user-library-details-image"><img src="Books/images/EstherBook.png" alt="Titre du livre"></th>
-                        <th class="user-library-details-title">Titre du livre</th>
-                        <th class="user-library-details-author">Auteur</th>
-                        <th class="user-library-details-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</th>
-                        <th class="user-library-details-available"><div class="available">disponible</div></th>
-                        <th class="user-library-details-actions"><a class="action-edit" href="#">Éditer</a> <a class="action-delete" href="#">Supprimer</a></th>
-                    </tr>
-                    <tr class="light">
-                        <th class="user-library-details-image"><img src="Books/images/MilkAndHoney.png" alt="Titre du livre"></th>
-                        <th class="user-library-details-title">Titre du livre 2</th>
-                        <th class="user-library-details-author">Auteur 2</th>
-                        <th class="user-library-details-description">Suspendisse potenti. Nulla facilisi...</th>
-                        <th class="user-library-details-available"><div class="not-available">non dispo.</div></th>
-                        <th class="user-library-details-actions"><a class="action-edit" href="#">Éditer</a> <a class="action-delete" href="#">Supprimer</a></th>
-                    </tr>
+                    <?php foreach ($books as $index => $book): ?>
+                        <tr class="<?= $index % 2 === 1 ? 'light' : '' ?>">
+                            <th class="user-library-details-image">
+                                <img src="Books/images/<?= htmlspecialchars($book->getImage()) ?>" alt="<?= htmlspecialchars($book->getTitle()) ?>">
+                            </th>
+                            <th class="user-library-details-title"><?= htmlspecialchars($book->getTitle()) ?></th>
+                            <th class="user-library-details-author"><?= htmlspecialchars($book->getAuthor()) ?></th>
+                            <th class="user-library-details-description"><?= htmlspecialchars($book->getShortDescription() ?? 'Pas de description.') ?></th>
+                            <th class="user-library-details-available">
+                                <div class="<?= $book->getAvailable() ? 'available' : 'not-available' ?>">
+                                    <?= $book->getAvailable() ? 'disponible' : 'non dispo.' ?>
+                                </div>
+                            </th>
+                            <th class="user-library-details-actions">
+                                <a class="action-edit" href="index.php?action=editBook&id=<?= $book->getId() ?>">Éditer</a>
+                                <a class="action-delete" href="index.php?action=deleteBook&id=<?= $book->getId() ?>">Supprimer</a>
+                            </th>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
-
-        <div class="user-library card-active">
-            <div class="user-library-details-card">
-                <div class="user-library-details-card-top">
-                    <img src="book_image.jpg" alt="Titre du livre">
-                    <div class="user-library-details-card-top-text">
-                        <div class="user-library-details-title">Titre du livre</div>
-                        <div class="user-library-details-author">Auteur</div>
-                        <div class="available">disponible</div>
-                    </div>
-                </div>
-
-                <div class="user-library-details-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</div>
-                <div class="user-library-details-actions">
-                    <a class="action-edit" href="#">Éditer</a> <a class="action-delete" href="#">Supprimer</a>
-                </div>
-            </div>
-
-            <div class="user-library-details-card">
-                <div class="user-library-details-card-top">
-                    <img src="book_image.jpg" alt="Titre du livre 2">
-                    <div class="user-library-details-card-top-text">
-                        <div class="user-library-details-title">Titre du livre 2</div>
-                        <div class="user-library-details-author">Auteur 2</div>
-                        <div class="not-available">non disponible</div>
-                    </div>
-                </div>
-
-                <div class="user-library-details-description">Suspendisse potenti. Nulla facilisi...</div>
-                <div class="user-library-details-actions">
-                    <a class="action-edit" href="#">Éditer</a> <a class="action-delete" href="#">Supprimer</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>

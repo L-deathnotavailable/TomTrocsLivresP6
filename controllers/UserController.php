@@ -96,7 +96,23 @@ class UserController {
     }
 
     public function showMyAccount() {
+        if (!isset($_SESSION['idUser'])) {
+            Utils::redirect('showConnexion');
+            return;
+        }
+    
+        $userId = $_SESSION['idUser'];
+    
+        $userManager = new UserManager();
+        $bookManager = new BookManager();
+    
+        $user = $userManager->getUserById($userId);
+        $books = $bookManager->getBooksByUser($userId);
+    
         $view = new View('myAccount');
-        $view->render('myAccount');
+        $view->render('myAccount', [
+            'user' => $user,
+            'books' => $books
+        ]);
     }
 }

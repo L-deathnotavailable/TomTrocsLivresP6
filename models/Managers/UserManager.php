@@ -36,4 +36,11 @@ class UserManager extends AbstractEntityManager
         }
         return null;
     }
+    public function getUserById(int $id): ?User {
+        $sql = "SELECT * FROM users WHERE id = :id";
+        $result = $this->db->query($sql, ['id' => $id]);
+        $data = $result->fetch();
+        
+        return $data ? new User($data) : null;
+    }
 }
