@@ -5,35 +5,36 @@
                 <div class="user-account-details">
                     <div class="user-informations">
                         <div class="user-informations-image">
-                            <img src="Userimages/<?= $user->getAccountPicture() ?: '/Userimages/default.png' ?>" alt="image utilisateur">
-                            <form method="POST" action="#"  enctype="">
-                                <input type="file" name="imageToUpload" id="imageToUpload" style="display: none;">
+                            <img src="Userimages/<?= $user->getAccountPicture() ?: 'default.png' ?>" alt="image utilisateur">
+                            <form method="POST" action="index.php?action=updateUserImage" enctype="multipart/form-data">
+                                <input type="hidden" name="user_id" value="<?= $user->getId() ?>">
+                                <input type="file" name="imageToUpload" id="imageToUpload" accept="image/*" style="display: none;">
                                 <a href="#" id="new-user-image-link">modifier</a>
-                                <input type="submit" id="submit-new-image" style="display: none;" >
+                                <input type="submit" id="submit-new-image" style="display: none;">
                             </form>
                         </div>
                         <div class="user-informations-details">
-                        <p class="user-informations-username"><?= htmlspecialchars($user->getUsername()) ?></p>
-                        <p class="user-informations-seniority">
-                            <?php
-                                $now = new DateTime();
-                                $creationDate = $user->getCreationDate();
-                                $diff = $creationDate->diff($now);
+                            <p class="user-informations-username"><?= htmlspecialchars($user->getUsername()) ?></p>
+                            <p class="user-informations-seniority">
+                                <?php
+                                    $now = new DateTime();
+                                    $creationDate = $user->getCreationDate();
+                                    $diff = $creationDate->diff($now);
 
-                                if ($diff->y >= 1) {
-                                    $years = $diff->y;
-                                    echo "Membre depuis $years " . ($years === 1 ? "an" : "ans");
-                                } else {
-                                    $months = $diff->m;
-                                    echo "Membre depuis $months " . ($months === 1 ? "mois" : "mois");
-                                }
-                            ?>
-                        </p>
-                        <p class="user-informations-library">BIBLIOTHÈQUE</p>
-                        <div class="number-Books">
-                            <img src="images/library.svg" width="10.41" height="13.71" alt="livre" style="vertical-align: middle; margin-right: 5px;">
-                            <p class="user-informations-nb-book"><?= count($books) ?> livre(s)</p>
-                        </div>
+                                    if ($diff->y >= 1) {
+                                        $years = $diff->y;
+                                        echo "Membre depuis $years " . ($years === 1 ? "an" : "ans");
+                                    } else {
+                                        $months = $diff->m;
+                                        echo "Membre depuis $months " . ($months === 1 ? "mois" : "mois");
+                                    }
+                                ?>
+                            </p>
+                            <p class="user-informations-library">BIBLIOTHÈQUE</p>
+                            <div class="number-Books">
+                                <img src="images/library.svg" width="10.41" height="13.71" alt="livre" style="vertical-align: middle; margin-right: 5px;">
+                                <p class="user-informations-nb-book"><?= count($books) ?> livre(s)</p>
+                            </div>
                         </div>
                     </div>
                 </div>

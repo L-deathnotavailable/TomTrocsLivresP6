@@ -69,6 +69,11 @@ try {
             $userController->showMyAccount();
         break;
 
+        case 'updateUserImage':
+            $userController = new UserController();
+            $userController->updateUserImage();
+        break;
+        
         case 'searchBooks':
             $bookController = new BooksController();
             $bookController->searchBooks();

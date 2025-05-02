@@ -43,4 +43,13 @@ class UserManager extends AbstractEntityManager
         
         return $data ? new User($data) : null;
     }
+
+    public function updatePicture(int $userId, string $fileName): void {
+        $sql = "UPDATE users SET account_picture = :pic WHERE id = :id";
+        $this->db->query($sql, [
+            'pic' => $fileName,
+            'id' => $userId
+        ]);
+    }
+    
 }
