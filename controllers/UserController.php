@@ -130,53 +130,49 @@ class UserController {
         $_SESSION['success'] = 'Informations mises à jour avec succès.';
         Utils::redirect('showMyAccount');
     }
-
-    public function updateUserImage(): void
-    {
+    
+    public function updateUserImage(): void {
         if (!isset($_SESSION['idUser'])) {
             Utils::redirect('showConnexion');
             return;
         }
-    
         $userId = $_SESSION['idUser'];
         $userManager = new UserManager();
-    
-        if (isset($_FILES['imageToUpload']) && $_FILES['imageToUpload']['error'] === UPLOAD_ERR_OK) {
-            $targetDir = 'UserImages/';
-            $targetFile = $targetDir . basename($_FILES['imageToUpload']['name']);
-            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-    
-            // On vérifie si l'image est une image réelle
-            $check = getimagesize($_FILES['imageToUpload']['tmp_name']);
-            if ($check !== false) {
-                // Vérification de la taille du fichier 
-                if ($_FILES['imageToUpload']['size'] > 500000) { // 500KB
-                    $_SESSION['error'] = 'Le fichier est trop volumineux.';
-                    Utils::redirect('showMyAccount');
-                    return;
-                }
-    
-                // Autoriser seulement certains formats de fichiers
-                $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
-                if (in_array($imageFileType, $allowedTypes)) {
-                    if (move_uploaded_file($_FILES['imageToUpload']['tmp_name'], $targetFile)) {
-                        $userManager->updatePicture($userId, basename($_FILES['imageToUpload']['name']));
-                        $_SESSION['success'] = 'Image de profil mise à jour avec succès.';
-                    } else {
-                        $_SESSION['error'] = 'Désolé, il y a eu une erreur lors du téléchargement de votre fichier.';
-                    }
-                } else {
-                    $_SESSION['error'] = 'Seuls les fichiers JPG, JPEG, PNG et GIF sont autorisés.';
-                }
-            } else {
-                $_SESSION['error'] = 'Le fichier n\'est pas une image.';
-            }
-        } else {
+        if (!isset($_FILES['imageToUpload']) || $_FILES['imageToUpload']['error'] !== UPLOAD_ERR_OK) {
             $_SESSION['error'] = 'Aucun fichier n\'a été téléchargé.';
+            Utils::redirect('showMyAccount');
+            return;
         }
-    
+        $targetDir = 'UserImages/';
+        $fileName = basename($_FILES['imageToUpload']['name']);
+        $targetFile = $targetDir . $fileName;
+        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        // On vérifie si l'image est une image réelle
+        if (getimagesize($_FILES['imageToUpload']['tmp_name']) === false) {
+            $_SESSION['error'] = 'Le fichier n\'est pas une image.';
+            Utils::redirect('showMyAccount');
+            return;
+        }
+        // Vérification de la taille du fichier 
+        if ($_FILES['imageToUpload']['size'] > 500000) {
+            $_SESSION['error'] = 'Le fichier est trop volumineux.';
+            Utils::redirect('showMyAccount');
+            return;
+        }
+        // Autoriser seulement certains formats de fichiers
+        $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+        if (!in_array($imageFileType, $allowedTypes)) {
+            $_SESSION['error'] = 'Seuls les fichiers JPG, JPEG, PNG et GIF sont autorisés.';
+            Utils::redirect('showMyAccount');
+            return;
+        }
+        if (!move_uploaded_file($_FILES['imageToUpload']['tmp_name'], $targetFile)) {
+            $_SESSION['error'] = 'Désolé, il y a eu une erreur lors du téléchargement de votre fichier.';
+            Utils::redirect('showMyAccount');
+            return;
+        }
+        $userManager->updatePicture($userId, $fileName);
+        $_SESSION['success'] = 'Photo de profil du compte, mise à jour avec succès.';
         Utils::redirect('showMyAccount');
     }
-    
-
 }
