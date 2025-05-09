@@ -30,7 +30,7 @@ class UserController {
             'password' => $password,
             'creation_date' => new DateTime(),
         ]);
-
+        $user -> setAccountPicture("default.png");
         $userManager = new UserManager();
         $userManager->addUser($user);
 
@@ -109,6 +109,19 @@ class UserController {
         $user = $userManager->getUserById($userId);
         $books = $bookManager->getBooksByUser($userId);
     
+        if (!isset($_SESSION['idUser'])) {
+            Utils::redirect('showConnexion');
+            return;
+        }
+    
+        $userId = $_SESSION['idUser'];
+    
+        $userManager = new UserManager();
+        $bookManager = new BookManager();
+    
+        $user = $userManager->getUserById($userId);
+        $books = $bookManager->getBooksByUser($userId);
+    
         $view = new View('myAccount');
         $view->render('myAccount', [
             'user' => $user,
@@ -116,8 +129,22 @@ class UserController {
         ]);
     }
 
-    public function updateUserImage(): void
-    {
+    public function updateUser() {
+        $userId = $_SESSION['idUser'];
+        $email = Utils::request('email');
+        $password = Utils::request('password');
+        $username = Utils::request('username');
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        
+        $userManager = new UserManager();
+        $userManager->updateUser($userId, $email, $hash, $username);
+
+        $_SESSION['success'] = 'Informations mises à jour avec succès.';
+        Utils::redirect('showMyAccount');
+    }
+
+    public function updateUserImage(): void {
         if (!isset($_SESSION['idUser'])) {
             Utils::redirect('showConnexion');
             return;
@@ -162,6 +189,4 @@ class UserController {
     
         Utils::redirect('showMyAccount');
     }
-    
-
 }

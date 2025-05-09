@@ -23,11 +23,13 @@ class BookManager extends AbstractEntityManager
     }
 
     public function getBookById($id) {
-        $sql = "SELECT books.*, users.username AS seller_name FROM `books` JOIN users ON books.seller_id = users.id  WHERE books.id = :id";
+        $sql = "SELECT books.*, users.username AS seller_name, users.account_picture FROM `books` JOIN users ON books.seller_id = users.id  WHERE books.id = :id";
         $result = $this->db->query($sql, ['id' => $id]);
         $book = $result->fetch();
         if ($book) {
-            return new Book($book);
+            $return =  new Book($book); 
+            $return ->setAccountPicture($book['account_picture']);
+            return $return;
         }
         return null;
     }
@@ -76,5 +78,27 @@ class BookManager extends AbstractEntityManager
     {
         $sql = "DELETE FROM books WHERE id = :id";
         $this->db->query($sql, ['id' => $id]);
+    }
+
+    public function updateBook(int $id, string $title, string $author, string $description, int $availability, ?string $image): void {
+        $sql = "UPDATE books SET title = :title, author = :author, description = :description, available = :availability";
+        if ($image) {
+            $sql .= ", image = :image";
+        }
+        $sql .= " WHERE id = :id";
+
+        $params = [
+            'title' => $title,
+            'author' => $author,
+            'description' => $description,
+            'availability' => $availability,
+            'id' => $id
+        ];
+
+        if ($image) {
+            $params['image'] = $image;
+        }
+
+        $this->db->query($sql, $params);
     }
 }
