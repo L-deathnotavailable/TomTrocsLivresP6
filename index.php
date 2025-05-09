@@ -78,6 +78,16 @@ try {
             $userController = new UserController();
             $userController->updateUserImage();
         break;
+
+        case 'editBook':
+            $bookController = new BooksController();
+            $bookController->showEditBook();
+        break;
+        
+        case 'updateBook':
+            $bookController = new BooksController();
+            $bookController->updateBook();
+        break;
         
         case 'searchBooks':
             $bookController = new BooksController();
