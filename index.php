@@ -62,6 +62,11 @@ try {
             $adminController->disconnectUser();
         break;
 
+        case 'updateUser':
+            $controller = new UserController();
+            $controller->updateUser();
+        break;
+
         //Account part
 
         case 'showMyAccount': 
