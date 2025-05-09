@@ -15,6 +15,11 @@ try {
         $_SESSION['unreadCount'] = $messageManager->CountUnreadMessages($_SESSION['idUser']);
     }
     
+    if (isset($_SESSION['idUser'])) {
+        $messageManager = new MessageManager();
+        $_SESSION['unreadCount'] = $messageManager->CountUnreadMessages($_SESSION['idUser']);
+    }
+    
     switch ($action) {
         // Pages accessibles à tous.
 
