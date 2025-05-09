@@ -92,4 +92,9 @@ class Book extends AbstractEntity
         $this->accountPicture = $accountPicture ?? 'default.png'; // Met une image par défaut si NULL
     }
 
+    public function getShortDescription(int $length = 100): string {
+        $desc = $this->description ?? '';
+        return strlen($desc) > $length ? substr($desc, 0, $length) . '...' : $desc;
+    }
+
 }

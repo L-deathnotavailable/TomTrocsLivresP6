@@ -42,7 +42,6 @@ class BookManager extends AbstractEntityManager
                 LIMIT $limit";
 
         $result = $this->db->query($sql);
-        //$result = $this->db->query($sql,['limit' => $limit]); //--- TODO
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -61,5 +60,21 @@ class BookManager extends AbstractEntityManager
         $result = $this->db->query($sql);
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getBooksByUser(int $userId): array {
+        $sql = "SELECT * FROM books WHERE seller_id = :userId ORDER BY creation_date DESC";
+        $result = $this->db->query($sql, ['userId' => $userId]);
+    
+        $books = [];
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+    
+        return $books;
+    }
+    public function deleteBook(int $id) : void
+    {
+        $sql = "DELETE FROM books WHERE id = :id";
+        $this->db->query($sql, ['id' => $id]);
     }
 }

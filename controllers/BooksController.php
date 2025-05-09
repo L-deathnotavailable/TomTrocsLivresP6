@@ -33,4 +33,27 @@ class BooksController {
         $view = new View("Nos livres à l'échange");
         $view->render('Books', ['books' => $books]); 
     }
+    private function checkIfUserIsConnected(): ?int
+    {
+        if (!isset($_SESSION['user'])) {
+            Utils::redirect("showConnexion");
+        }
+        return $_SESSION['idUser'];
+    }
+    /**
+     * Suppression d'un livre.
+     * @return void
+     */
+    public function deleteBook() : void
+    {
+        $this->checkIfUserIsConnected();
+
+        $id = Utils::request("id", -1);
+
+        // On supprime le livre
+        $BookManager = new BookManager();
+        $BookManager->deleteBook($id);
+       
+        Utils::redirect("showMyAccount");
+    }
 }

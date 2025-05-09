@@ -10,6 +10,11 @@ $action = Utils::request('action', 'home');
 // Try catch global pour gérer les erreurs
 try {
     // Pour chaque action, on appelle le bon contrôleur et la bonne méthode.
+    if (isset($_SESSION['idUser'])) {
+        $messageManager = new MessageManager();
+        $_SESSION['unreadCount'] = $messageManager->CountUnreadMessages($_SESSION['idUser']);
+    }
+    
     switch ($action) {
         // Pages accessibles à tous.
 
@@ -64,9 +69,19 @@ try {
             $userController->showMyAccount();
         break;
 
+        case 'updateUserImage':
+            $userController = new UserController();
+            $userController->updateUserImage();
+        break;
+        
         case 'searchBooks':
             $bookController = new BooksController();
             $bookController->searchBooks();
+        break;
+
+        case 'deleteBook':
+            $BooksController = new BooksController();
+            $BooksController->deleteBook();
         break;
 
         //Conversation chat part

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/Chat.css">
+    <script src="/js/userAccount.js"></script>
 </head>
 
 <body>
