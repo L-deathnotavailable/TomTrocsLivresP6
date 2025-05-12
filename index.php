@@ -15,6 +15,11 @@ try {
         $_SESSION['unreadCount'] = $messageManager->CountUnreadMessages($_SESSION['idUser']);
     }
     
+    if (isset($_SESSION['idUser'])) {
+        $messageManager = new MessageManager();
+        $_SESSION['unreadCount'] = $messageManager->CountUnreadMessages($_SESSION['idUser']);
+    }
+    
     switch ($action) {
         // Pages accessibles à tous.
 
@@ -62,6 +67,11 @@ try {
             $adminController->disconnectUser();
         break;
 
+        case 'updateUser':
+            $controller = new UserController();
+            $controller->updateUser();
+        break;
+
         //Account part
 
         case 'showMyAccount': 
@@ -72,6 +82,16 @@ try {
         case 'updateUserImage':
             $userController = new UserController();
             $userController->updateUserImage();
+        break;
+
+        case 'editBook':
+            $bookController = new BooksController();
+            $bookController->showEditBook();
+        break;
+        
+        case 'updateBook':
+            $bookController = new BooksController();
+            $bookController->updateBook();
         break;
         
         case 'searchBooks':
