@@ -19,7 +19,7 @@
 
         <div class="book-details-owner">
             <p class="book-details-subtitle">PROPRIÉTAIRE</p>
-            <a class="book-details-owner-photo" href="#">
+            <a class="book-details-owner-photo" href="index.php?action=showPublicAccount&id=<?= htmlspecialchars($book->getSellerId()) ?>">
                 <img src="UserImages/<?= $book->getAccountPicture()?>" alt="User image">
                 <p><?php echo $book->getSellerName(); ?></p>
             </a>

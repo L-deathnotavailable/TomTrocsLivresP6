@@ -114,19 +114,25 @@ class UserController {
             return;
         }
     
-        $userId = $_SESSION['idUser'];
-    
-        $userManager = new UserManager();
-        $bookManager = new BookManager();
-    
-        $user = $userManager->getUserById($userId);
-        $books = $bookManager->getBooksByUser($userId);
     
         $view = new View('myAccount');
         $view->render('myAccount', [
             'user' => $user,
             'books' => $books
         ]);
+    }
+
+    public function showPublicAccount() {
+        $userManager = new UserManager();
+        $bookManager = new BookManager();
+        
+        $id = Utils::request('id');
+
+        $user = $userManager->getUserById($id);
+        $books = $bookManager->getBooksByUser($id);
+    
+        $view = new View("Compte Public");
+        $view->render('PublicAccount', ['user' => $user, 'books' => $books]);
     }
 
     public function updateUser() {
