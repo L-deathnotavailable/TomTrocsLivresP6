@@ -55,6 +55,12 @@
     align-items: center;
     margin-left: 5%;
 }
+.chat-header .user-image {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .ChatShow .right-section {
     flex: 8;
     background-color: var(--backgroundColor);
@@ -105,10 +111,10 @@
     border-radius: 50%;
 }
 /* Form part */
-form {
+.messages-wrapper form {
     padding: 20px 40px;
 }
-form input[type="text"] {
+.messages-wrapper form input[type="text"] {
     resize: none;
     overflow-y: scroll;
     min-height: 44px;
@@ -119,11 +125,21 @@ form input[type="text"] {
     box-sizing: border-box;
     padding: 10px 20px;
 }
-form input[type="submit"] {
+.messages-wrapper form input[type="submit"] {
     margin: 0 0 0 20px;
     height: 50px;
     width: 130px;
     background-color: var(--colorGreen);
     border: none;
     border-radius: 10px;
+}
+
+.no-conversation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.no-conversation .green-button {
+    width: 50%;
 }
