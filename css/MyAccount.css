@@ -1,0 +1,308 @@
+.user-account {
+    background-color: var(--backgroundColorLight);
+    padding: 5% 10%;
+}
+
+.user-account h2 {
+    font-size: 26px;
+}
+
+.account {
+    display: flex;
+}
+
+.user-account .left-section,
+.user-account .right-section,
+.user-account-details,
+.user-update-form {
+    border: white solid;
+    border-radius: 20px;
+}
+
+.user-account .left-section,
+.user-account .right-section {
+    width: 50%;
+    margin-right: 20px;
+}
+
+/* Left Section part */
+    .user-account .left-section {
+        background-color: var(--colorWhite);
+    }
+
+    .user-informations,
+    .user-update-form,
+    .user-library {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .user-informations {
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    .user-informations-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-informations-image img {
+        height: 135px;
+        width: 135px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 30px 0 10px;
+    }
+
+    .user-informations-image a {
+        font-size: 0.875rem;
+        color: var(--colorGrayLight);
+        margin-top: 5px;
+    }
+
+    .user-informations-details {
+        padding: 90px 0 40px 0;
+    }
+
+    .user-informations-username {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .user-informations-seniority {
+        margin: 10px;
+        font-size: 0.875rem;
+        color: var(--colorGrayLight);
+    }
+
+    .user-informations-library {
+        font-weight: 600;
+        font-size: 0.5rem;
+        margin-top: 20px;
+    }
+
+    .number-books {
+        display: flex;
+        justify-content: center;
+    }
+
+    .user-informations-nb-book {
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+/* Right Section part */
+    .user-update-form form {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding-top: 20px;
+    }
+
+    .user-update-form label {
+        font-size: 0.875rem;
+        color: var(--colorGrayLight);
+        margin: 30px 0 10px;
+    }
+
+    .user-update-form input {
+        width: 300px;
+        height: 50px;
+        border-radius: 6px;
+        border: #F0F0F0 solid 1px;
+        background-color: #EDF2F6;
+        padding-left: 10px;
+    }
+
+    .user-update-form input[type="submit"] {
+        border-radius: 10px;
+        width: auto;
+        color: var(--colorGreen);
+        background-color: var(--backgroundColor);
+        font-weight: 600;
+        border: #00AC66 solid 2px;
+        margin-top: 21px;
+    }
+
+/* User library board part */
+    .user-library {
+        width: 100%;
+        margin: 40px 0;
+        text-align: left;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .light {
+        background-color: #EDF2F6;
+    }
+
+    .user-library table {
+        margin-top: 20px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .user-library th,
+    .user-library td {
+        padding: 40px;
+        text-align: left;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .user-library thead th {
+        padding-right: 20px;
+        border-bottom: solid #F5F3EF 1px;
+    }
+
+    .user-library-details-available .available,
+    .user-library-details-available .not-available,
+    .card-active .user-library-details-card-top-text .available,
+    .card-active .user-library-details-card-top-text .not-available {
+        font-weight: 500;
+        text-align: center;
+        border-radius: 30px;
+        color: #FFFFFF;
+        padding: 2px;
+        width: 100px;
+    }
+
+    .user-library-details-available .available,
+    .card-active .user-library-details-card-top-text .available {
+        background-color: #6DC5A1;
+    }
+
+    .user-library-details-available .not-available,
+    .card-active .user-library-details-card-top-text .not-available {
+        background-color: #C56D6D;
+    }
+
+    .user-library-details-available .not-available {
+        width: 100%;
+    }
+
+    thead tr th {
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .action-edit {
+        color: #292929;
+    }
+
+    .action-delete {
+        color: #CB2D2D;
+        margin-left: 10px;
+    }
+
+    .user-library-details-actions {
+        width: 20%;
+    }
+
+    .user-library-details-image img {
+        width: 78px;
+        height: 78px;
+        object-fit: cover;
+    }
+
+    .user-library-details-title,
+    .user-library-details-author,
+    .user-library-details-description {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        width: 80px;
+    }
+
+    .user-library-details-card-top {
+        display: flex;
+    }
+
+    .user-library-details-card img {
+        min-width: 79px;
+        max-width: 79px;
+        min-height: 79px;
+        max-height: 79px;
+        object-fit: cover;
+    }
+
+    .user-library-details-card {
+        padding: 10%;
+    }
+
+    .user-library-details-card-top-text {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-left: 10px;
+    }
+
+    .card-active {
+        display: none;
+        height: auto;
+    }
+
+    .card-active .user-library-details-title,
+    .card-active .user-library-details-author,
+    .card-active .user-library-details-description {
+        width: 100%;
+    }
+
+    .card-active .user-library-details-actions {
+        display: flex;
+        margin-top: 40px;
+    }
+
+    .card-active .user-library-details-description {
+        margin-top: 20px;
+    }
+
+    #username {
+        width: 314px;
+        height: 54px;
+    }
+
+    #password {
+        font: small-caption;
+        font-size: 16px;
+    }
+
+/* Section "user-account" RESPONSIVE */
+@media screen and (max-width: 1024px) {
+    .user-account-details {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 500px auto;
+        gap: 25px;
+        grid-template-areas:
+            "user-info user-info"
+            "user-update-form user-update-form"
+            "user-library user-library"
+            "user-library user-library";
+    }
+
+    .user-update-form {
+        margin-top: 40px;
+    }
+
+    .user-library {
+        margin-top: 80px;
+    }
+
+    .tab-active {
+        display: none;
+    }
+
+    .card-active {
+        display: block;
+    }
+}

@@ -1,0 +1,18 @@
+footer {
+    background-color: #ffffff;
+    justify-content: flex-end;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    font-size: 12px;
+}
+
+.footer-link {
+    margin: 20px;
+    color: var(--colorGrayDark);
+    text-decoration: none;
+}
+
+footer img {
+    margin-right: 20px;
+}

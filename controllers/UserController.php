@@ -91,6 +91,9 @@ class UserController {
             // On déconnecte l'utilisateur.
             unset($_SESSION['user']);
         }
+        // Détruire la session
+        session_destroy();
+
         // On redirige vers la page d'accueil.
         Utils::redirect("home");
     }
@@ -108,12 +111,6 @@ class UserController {
     
         $user = $userManager->getUserById($userId);
         $books = $bookManager->getBooksByUser($userId);
-    
-        if (!isset($_SESSION['idUser'])) {
-            Utils::redirect('showConnexion');
-            return;
-        }
-    
     
         $view = new View('myAccount');
         $view->render('myAccount', [
