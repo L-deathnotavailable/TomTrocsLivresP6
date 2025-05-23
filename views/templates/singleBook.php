@@ -24,8 +24,8 @@
                 <p><?php echo $book->getSellerName(); ?></p>
             </a>
         </div>
-        <details class="book-details-contact">
-            <summary><div class="green-button">Envoyer un message</div></summary>
-        </details>
+        
+        <a href="index.php?action=showChat&receiverId=<?= htmlspecialchars($book->getSellerId()) ?>" class="green-button">Envoyer un message</a>
+        
     </div>
 </section>
