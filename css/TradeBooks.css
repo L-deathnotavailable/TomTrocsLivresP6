@@ -1,0 +1,91 @@
+.last-added-books {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--backgroundColorLight);
+    padding: 2% 10%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.last-added-books form {
+    background-color: #FFFFFF;
+    border-radius: 6px;
+}
+
+.last-added-books form i {
+    padding: 10px;
+    color: #D9D9D9;
+}
+
+#search {
+    max-width: 290px;
+    min-width: 240px;
+    height: 50px;
+    border: none;
+    border-radius: 0 6px 6px 0;
+}
+
+.header-exchanges {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Cards container part with the fourth books by line */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 84%;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--colorWhite);
+    margin: 20px;
+    width: 200px;
+    height: 324px;
+}
+
+.book-card a {
+    text-decoration: none;
+}
+
+.book-card img {
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+}
+
+.text-card {
+    padding: 10px;
+}
+
+.book-card .title-book-card {
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--colorBlack)
+}
+
+.book-card .author-book-card {
+    font-weight: 400;
+    font-size: .875rem;
+    color: var(--colorGrayLight);
+}
+
+.book-card .seller-book-card {
+    font-weight: 400;
+    font-size: .625rem;
+    font-style: italic;
+    color: var(--colorGrayLight);
+}
+
+.last-added-books .green-button {
+    width: 50%;
+}
