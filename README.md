@@ -11,6 +11,7 @@ TomTroc vise à créer une plateforme conviviale où les membres peuvent facilem
 - PHP
 - HTML
 - CSS
+- JS
 - Git et GitHub pour le versionnage du code
 
 ## Installation
