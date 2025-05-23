@@ -1,0 +1,108 @@
+/* Section "PublicUser-account" */
+
+.PublicUser-account {
+    background-color: var(--backgroundColorLight);
+    padding: 5% 10%;
+    display: flex;
+}
+
+.PublicAccount {
+    display: flex;
+}
+
+.PublicUser-account h2 {
+    font-size: 26px;
+}
+
+.PublicUser-account .left-section {
+    background-color: var(--colorWhite);
+    width: 341px;
+    margin-right: 20px;
+    border: white solid;
+    border-radius: 20px;
+}
+
+.PublicUser-account-details,
+.user-update-form {
+    border: white solid;
+    border-radius: 20px;
+}
+
+.PublicUser-account .right-section {
+    width: 50%;
+    margin-right: 20px;
+    border: white solid;
+    border-radius: 20px;
+}
+
+.send-message {
+    margin-top: 65px;
+}
+
+.btn-send-message {
+    border-radius: 10px;
+    color: var(--colorGreen);
+    background-color: var(--backgroundColor);
+    border: #00AC66 solid 2px;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.btn-send-message:hover {
+    color: white;
+    background-color: #05ad6a;
+    border: #05ad6a solid 2px;
+}
+
+.public-user-library {
+    width: 100%;
+    text-align: left;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+}
+
+
+.public-user-library table {
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.public-user-library thead th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 20px 24px;
+    border-bottom: solid #F5F3EF 1px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.public-user-library tbody th,
+.user-library tbody td {
+    padding: 32px 30px;
+    font-size: 14px;
+    vertical-align: top;
+    font-weight: 500;
+    align-content: center;
+}
+
+.PublicUser-account .user-library-details-image {
+    width: 15%;
+}
+
+.PublicUser-account .user-library-details-title {
+    width: 13%;
+}
+
+.PublicUser-account .user-library-details-author {
+    width: 10%;
+}
+
+.PublicUser-account .user-library-details-description {
+    width: 25%;
+}
