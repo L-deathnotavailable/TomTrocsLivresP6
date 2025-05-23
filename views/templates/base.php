@@ -32,7 +32,18 @@
 
 <body>
     <?php include ('header.php');?>
-    <main>    
+    <main>
+        <!-- Afficher les erreurs spécifiques aux champs -->
+        <?php if (isset($_SESSION['errors'])): ?>
+            <?php foreach ($_SESSION['errors'] as $error): ?>
+                <div class="error">
+                    <?php echo htmlspecialchars($error); ?>
+                </div>
+            <?php endforeach; ?>
+            <?php unset($_SESSION['errors']); ?>
+        <?php endif; ?>
+
+
         <?php if (isset($_SESSION['error'])): ?>
             <div class="error">
                 <?php echo $_SESSION['error']; ?>

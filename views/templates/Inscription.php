@@ -4,13 +4,13 @@
         <h2>Inscription</h2>
         <form method="POST" action="index.php?action=inscription">
                 <label for="username">Pseudo</label>
-                <input type="text" id="username" name="username" minlength="3" maxlength="32" required>
+                <input type="text" id="username" name="username">
 
                 <label for="email">Adresse email</label>
-                <input type="email" id="email" name="email" minlength="3" maxlength="320" required>
+                <input type="email" id="email" name="email">
 
                 <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" minlength="12" maxlength="72" required>
+                <input type="password" id="password" name="password">
 
                 <input type="submit" value="S'inscrire">
         </form>

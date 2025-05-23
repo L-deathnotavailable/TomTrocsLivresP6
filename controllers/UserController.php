@@ -12,6 +12,36 @@ class UserController {
             'email' => strip_tags(Utils::request('email')),
             'password' => strip_tags(Utils::request('password')),
         ];
+        // Validation des données
+        $errors = [];
+
+        // Validation du pseudo
+        if (empty($formData['username'])) {
+            $errors['username'] = 'Le pseudo est requis.';
+        } elseif (strlen($formData['username']) < 3) {
+            $errors['username'] = 'Le pseudo doit contenir au moins 3 caractères.';
+        }
+
+        // Validation de l'email
+        if (empty($formData['email'])) {
+            $errors['email'] = 'L\'adresse email est requise.';
+        } elseif (!$formData['email']) {
+            $errors['email'] = 'L\'adresse email n\'est pas valide.';
+        }
+
+        // Validation du mot de passe
+        if (empty($formData['password'])) {
+            $errors['password'] = 'Le mot de passe est requis.';
+        } elseif (strlen($formData['password']) < 12) {
+            $errors['password'] = 'Le mot de passe doit contenir au moins 12 caractères.';
+        }
+
+        // Si des erreurs sont présentes, on les stock dans la session et on redirige
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            Utils::redirect('showInscription');
+            return;
+        }
 
         // Vérification des doublons avec username et email
         $userManager = new UserManager();
@@ -68,7 +98,7 @@ class UserController {
         // On vérifie que le mot de passe est correct.
         if (!password_verify($password, $user->getPassword())) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            throw new Exception("Le mot de passe est incorrect : $hash");
+            throw new Exception("Le mot de passe est incorrect");
         }
 
         // On connecte l'utilisateur.
